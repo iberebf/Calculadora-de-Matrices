@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int fila1, col1, fila2, col2;
+
+    // Solicitar dimensiones de la primera matriz
+    cout << "Ingrese el número de filas de la primera matriz: ";
+    cin >> fila1;
+    cout << "Ingrese el número de columnas de la primera matriz: ";
+    cin >> col1;
+
+    // Solicitar dimensiones de la segunda matriz
+    cout << "Ingrese el número de filas de la segunda matriz: ";
+    cin >> fila2;
+    cout << "Ingrese el número de columnas de la segunda matriz: ";
+    cin >> col2;
+
+    // Verificar si se puede realizar la multiplicación de matrices
+    if (col1 != fila2) {
+        cout << "La multiplicación de matrices no es posible. El número de columnas de la primera matriz debe coincidir con el número de filas de la segunda matriz." << endl;
+        return 1;
+    }
+
+    // Declarar las matrices
+    int matri1[fila1][col1], matri2[fila2][col2], pro[fila1][col2];
+
+    // Solicitar elementos de la primera matriz
+    cout << "Ingrese los elementos de la primera matriz:" << endl;
+    for (int i = 0; i < fila1; i++) {
+        for (int j = 0; j < col1; j++) {
+            cout << "Elemento [" << i + 1 << "][" << j + 1 << "]: ";
+            cin >> matri1[i][j];
+        }
+    }
+
+
+      // Solicitar elementos de la segunda matriz
+    cout << "Ingrese los elementos de la segunda matriz:" << endl;
+    for (int i = 0; i < fila2; i++) {
+        for (int j = 0; j < col2; j++) {
+            cout << "Elemento [" << i + 1 << "][" << j + 1 << "]: ";
+            cin >> matri2[i][j];
+        }
+    }
+
+    // Inicializar la matriz de producto a cero
+    for (int i = 0; i < fila1; i++) {
+        for (int j = 0; j < col2; j++) {
+            pro[i][j] = 0;
+        }
+    }
+
+    // Calcular el producto de las matrices
+    for (int i = 0; i < fila1; i++) {
+        for (int j = 0; j < col2; j++) {
+            for (int k = 0; k < col1; k++) {
+                pro[i][j] += matri1[i][k] * matri2[k][j];
+            }
+        }
+    }
+
+    // Mostrar el resultado
+    cout << "El producto de las matrices es:" << endl;
+    for (int i = 0; i < fila1; i++) {
+        for (int j = 0; j < col2; j++) {
+            cout << pro[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+}
